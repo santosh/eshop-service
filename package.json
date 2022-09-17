@@ -1,0 +1,29 @@
+{
+  "name": "eshop-service",
+  "version": "0.1.0",
+  "description": "Backend of an e-commerce application written using ME*N stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santosh/eshop-service.git"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "ecommerce",
+    "mongodb"
+  ],
+  "author": "Santosh Kumar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/santosh/eshop-service/issues"
+  },
+  "homepage": "https://github.com/santosh/eshop-service#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
+  }
+}
