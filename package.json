@@ -4,7 +4,8 @@
   "description": "Backend of an e-commerce application written using ME*N stack.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec node index.js --signal SIGTERM"
   },
   "repository": {
     "type": "git",
