@@ -1,8 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bcrypt = require("bcryptjs")
 
 const dbConfig = require("./configs/db.config")
 const serverConfig = require("./configs/server.config")
+const secretConfig = require("./configs/secret.config")
+const User = require("./models/user.model")
+const constants = require("./utils/constants")
 
 mongoose.connect(dbConfig.DB_URL)
 
@@ -14,8 +18,38 @@ db.on("error", () => {
 
 db.once("open", () => {
   console.log("Connected to the MongoDB");
-  // init()
+  init()
 })
+
+async function init() {
+  // check if the admin user is already existing
+  try {
+    const adminUser = await User.findOne({ email: 'sntshkmr60@gmail.com' })
+    if (adminUser) {
+      console.log("Admin user already exists");
+      return
+    }
+  } catch (err) {
+    console.log("Error while checking for admin the user", err.message);
+  }
+
+  try {
+    // create an admin user
+    const admin = await User.create({
+      first_name: "Santosh",
+      last_name: "Kumar",
+      email: "sntshkmr60@gmail.com",
+      password: bcrypt.hashSync("Welcome@1", secretConfig.saltLength),
+      contact_number: "1234567890",
+      role: constants.roles.admin,
+    })
+
+    console.log(admin);
+
+  } catch (err) {
+    console.log("Error while storing the user", err.message);
+  }
+}
 
 const app = express();
 
