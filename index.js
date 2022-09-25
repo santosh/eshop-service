@@ -52,11 +52,14 @@ async function init() {
 }
 
 const app = express();
+app.use(express.json())
 
 app.get('/ping', (req, res) => {
   res.json({ "message": "pong" })
 });
 
+
+app.use("/api/v1/users", require("./routes").userRoute)
 
 app.listen(serverConfig.PORT, () => {
   console.log("eshop-service is listening on port no:", serverConfig.PORT);
