@@ -38,6 +38,7 @@ async function init() {
     const admin = await User.create({
       first_name: "Santosh",
       last_name: "Kumar",
+      username: "sntshk",
       email: "sntshkmr60@gmail.com",
       password: bcrypt.hashSync("Welcome@1", secretConfig.saltLength),
       contact_number: "1234567890",
@@ -59,7 +60,7 @@ app.get('/ping', (req, res) => {
 });
 
 
-app.use("/api/v1/users", require("./routes").userRoute)
+app.use("/api/v1", require("./routes").userRoute)
 
 app.listen(serverConfig.PORT, () => {
   console.log("eshop-service is listening on port no:", serverConfig.PORT);

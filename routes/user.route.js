@@ -4,6 +4,7 @@ const validate = require("../middlewares/user.middleware")
 const express = require("express")
 const router = express.Router()
 
-router.post("/signup", [validate.requestBody], control.signup);
+router.post("/users", [validate.signupBody], control.signup);
+router.post("/auth", [validate.loginBody], control.login);
 
 module.exports = router

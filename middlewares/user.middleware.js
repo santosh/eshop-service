@@ -1,4 +1,4 @@
-const requestBody = (req, res, next) => {
+const signupBody = (req, res, next) => {
   if (!req.body.first_name) {
     return res.status(400).send({
       message: "first_name not provided"
@@ -8,6 +8,12 @@ const requestBody = (req, res, next) => {
   if (!req.body.last_name) {
     return res.status(400).send({
       message: "last_name not provided"
+    })
+  }
+
+  if (!req.body.username) {
+    return res.status(400).send({
+      message: "username not provided"
     })
   }
 
@@ -69,6 +75,23 @@ function isContactNumberValid(contact_no) {
   return /^\d{10}$/.test(contact_no)
 }
 
+const loginBody = (req, res, next) => {
+  if (!req.body.email) {
+    return res.status(400).send({
+      message: "email not provided"
+    })
+  }
+
+  if (!req.body.password) {
+    return res.status(400).send({
+      message: "password not provided"
+    })
+  }
+
+  next()
+}
+
 module.exports = {
-  requestBody
+  signupBody,
+  loginBody
 }
