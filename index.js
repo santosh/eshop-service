@@ -61,6 +61,7 @@ app.get('/ping', (req, res) => {
 
 
 app.use("/api/v1", require("./routes").userRoute)
+app.use("/api/v1", require("./routes").addressRoute)
 
 app.listen(serverConfig.PORT, () => {
   console.log("eshop-service is listening on port no:", serverConfig.PORT);

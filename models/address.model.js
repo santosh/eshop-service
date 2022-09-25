@@ -1,15 +1,34 @@
 const mongoose = require("mongoose")
 
 const addressSchema = new mongoose.Schema({
-  id: Number,  // do we use this one, or the inbuild `_id`.
-  city: String,
-  landmark: String,
-  name: String,  // if we link adderss to user, this is a duplicate field
-  contact_number: String,  // if we link adderss to user, this is a duplicate field
-  state: String,
-  street: String,
-  zipcode: Number,
-  user_id: Number
-})
+  name: {
+    type: String,
+    required: true
+  },
+  contact_number: {
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  landmark: {
+    type: String,
+    required: true
+  },
+  street: {
+    type: String,
+    required: true
+  },
+  state: {
+    type: String,
+    required: true
+  },
+  zipcode: {
+    type: String,
+    required: true
+  }
+}, { timestamps: true, versionKey: false })
 
 module.exports = mongoose.model("Address", addressSchema);
