@@ -1,16 +1,34 @@
 const mongoose = require("mongoose")
 
 const productSchema = new mongoose.Schema({
-  id: Number, // do we use this one, or the inbuild `_id`.
-  available_items: Number,
-  category: Number,
-  created: Date,
-  description: String,
-  image_url: String,
-  manufacturer: String,
-  name: String,
-  price: Number,
-  updated: Date
-})
+  name: {
+    type: String,
+    required: true
+  },
+  available_items: {
+    type: Number,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  image_url: {
+    type: String,
+    required: true
+  },
+  manufacturer: {
+    type: String,
+    required: true
+  },
+}, { timestamps: true, versionKey: false })
 
 module.exports = mongoose.model("Product", productSchema);

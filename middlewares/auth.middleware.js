@@ -28,19 +28,19 @@ authRequired = (req, res, next) => {
   })
 }
 
-// isAdmin = async (req, res, next) => {
-//   const user = await User.findOne({ userID: req.userId })
+isAdmin = async (req, res, next) => {
+  const user = await User.findOne({ username: req.username })
 
-//   if (user && user.role == constants.roles.admin) {
-//     next()
-//   } else {
-//     return res.status(403).send({
-//       message: "Only ADMIN is allowed to make this call"
-//     })
-//   }
-// }
+  if (user && user.role == constants.roles.admin) {
+    next()
+  } else {
+    return res.status(403).send({
+      message: "You are not authorised to access this endpoint!"
+    })
+  }
+}
 
 module.exports = {
   authRequired,
-  // isAdmin
+  isAdmin
 }
