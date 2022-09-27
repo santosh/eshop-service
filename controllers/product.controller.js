@@ -38,6 +38,50 @@ exports.newProduct = async (req, res) => {
   }
 }
 
+exports.updateProductById = async (req, res) => {
+  // read the product input
+  const product = await Product.findOne({ _id: req.params.id })
+
+  if (!product) {
+    res.status(404).json({
+      message: `No Product found for ID - ${req.params.id}!`
+    })
+  }
+
+  product.name = req.body.name == undefined ? product.name : req.body.name
+  product.category = req.body.category == undefined ? product.category : req.body.category
+  product.price = req.body.price == undefined ? product.price : req.body.price
+  product.description = req.body.description == undefined ? product.description : req.body.description
+  product.manufacturer = req.body.manufacturer == undefined ? product.manufacturer : req.body.manufacturer
+  product.available_items = req.body.available_items == undefined ? product.available_items : req.body.available_items
+  product.image_url = req.body.image_url == undefined ? product.image_url : req.body.image_url
+
+  // store product data to DB
+  try {
+    const productSaved = await product.save()
+
+    // return response
+    const productResp = {
+      name: productSaved.name,
+      category: productSaved.category,
+      price: productSaved.price,
+      description: productSaved.description,
+      manufacturer: productSaved.manufacturer,
+      available_items: productSaved.available_items,
+      image_url: productSaved.image_url,
+      createdAt: productSaved.createdAt,
+      updatedAt: productSaved.updatedAt
+    }
+    res.status(200).json(productResp)
+
+  } catch (error) {
+    console.log(`Error while updating product with id: ${req.params.id}`, error.message);
+    res.status(500).json({
+      message: `Internal Server Error while updating product with id: ${req.params.id}`
+    })
+  }
+}
+
 exports.getAllProducts = async (req, res) => {
   // const category = req.query.category
   // const direction = req.query.direction == undefined ? -1 : 1

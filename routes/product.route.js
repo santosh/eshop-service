@@ -6,9 +6,14 @@ const router = require("express").Router()
 
 router.post("/products",
   [validateAuth.authRequired, validateAuth.isAdmin, validateProduct.productBody],
-  control.newProduct);
-router.get("/products", [], control.getAllProducts);
+  control.newProduct
+);
+router.get("/products", control.getAllProducts);
 router.get("/products/categories", control.getProductCategories);
 router.get("/products/:id", control.getProductById);
+router.put("/products/:id",
+  [validateAuth.authRequired, validateAuth.isAdmin],
+  control.updateProductById
+);
 
 module.exports = router
