@@ -37,3 +37,48 @@ exports.newProduct = async (req, res) => {
     })
   }
 }
+
+exports.getAllProducts = async (req, res) => {
+  // const category = req.query.category
+  // const direction = req.query.direction == undefined ? -1 : 1
+  // const name = req.query.name
+  // const sortBy = req.query.sortBy
+
+  // console.log("category", category);
+  // console.log("direction", direction);
+  // console.log("name", name);
+  // console.log("sortBy", sortBy);
+
+  try {
+    const products = await Product.find()
+
+    res.status(200).json(products)
+
+  } catch (error) {
+    console.log("Error while getting products", error.message);
+    res.status(500).json({
+      message: "Internal Server Error getting products"
+    })
+  }
+}
+
+// exports.getProductById = async (req, res) => {
+//   const id = req.params.id
+
+//   try {
+//     const product = await Product.findOne({ _id: id })
+
+//     if (!product) {
+//       res.status(404).json({
+//         message: "Product not found"
+//       })
+//     }
+//     res.status(200).json(product)
+
+//   } catch (error) {
+//     console.log("Error while getting product", error.message);
+//     res.status(500).json({
+//       message: "Internal Server Error getting product"
+//     })
+//   }
+// }

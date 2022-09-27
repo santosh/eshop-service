@@ -7,5 +7,7 @@ const router = require("express").Router()
 router.post("/products",
   [validateAuth.authRequired, validateAuth.isAdmin, validateProduct.productBody],
   control.newProduct);
+router.get("/products", [], control.getAllProducts);
+// router.get("/products/:id", control.getProductById);
 
 module.exports = router
