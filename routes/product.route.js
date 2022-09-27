@@ -15,5 +15,9 @@ router.put("/products/:id",
   [validateAuth.authRequired, validateAuth.isAdmin],
   control.updateProductById
 );
+router.delete("/products/:id",
+  [validateAuth.authRequired, validateAuth.isAdmin],
+  control.deleteProductById
+);
 
 module.exports = router

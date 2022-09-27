@@ -52,7 +52,6 @@ exports.signup = async (req, res) => {
 }
 
 exports.login = async (req, res) => {
-  console.log("Inside login handler");
   const user = await User.findOne({ email: req.body.email })
 
   // check if user exists

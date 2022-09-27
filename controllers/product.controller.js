@@ -145,3 +145,25 @@ exports.getProductById = async (req, res) => {
     })
   }
 }
+
+exports.deleteProductById = async (req, res) => {
+  const id = req.params.id
+
+  try {
+    const product = await Product.findOne({ _id: id })
+
+    if (!product) {
+      res.status(404).json({
+        message: `No Product found for ID - ${id}!`
+      })
+    }
+    await product.delete()
+    res.status(200).json(product)
+
+  } catch (error) {
+    console.log("Error while getting product", error.message);
+    res.status(500).json({
+      message: "Internal Server Error getting product"
+    })
+  }
+}
