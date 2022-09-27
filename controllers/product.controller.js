@@ -62,23 +62,23 @@ exports.getAllProducts = async (req, res) => {
   }
 }
 
-// exports.getProductById = async (req, res) => {
-//   const id = req.params.id
+exports.getProductById = async (req, res) => {
+  const id = req.params.id
 
-//   try {
-//     const product = await Product.findOne({ _id: id })
+  try {
+    const product = await Product.findOne({ _id: id })
 
-//     if (!product) {
-//       res.status(404).json({
-//         message: "Product not found"
-//       })
-//     }
-//     res.status(200).json(product)
+    if (!product) {
+      res.status(404).json({
+        message: `No Product found for ID - ${id}!`
+      })
+    }
+    res.status(200).json(product)
 
-//   } catch (error) {
-//     console.log("Error while getting product", error.message);
-//     res.status(500).json({
-//       message: "Internal Server Error getting product"
-//     })
-//   }
-// }
+  } catch (error) {
+    console.log("Error while getting product", error.message);
+    res.status(500).json({
+      message: "Internal Server Error getting product"
+    })
+  }
+}
