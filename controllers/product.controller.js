@@ -62,6 +62,25 @@ exports.getAllProducts = async (req, res) => {
   }
 }
 
+exports.getProductCategories = async (req, res) => {
+  const id = req.params.id
+
+  try {
+    const products = await Product.find().distinct('category')
+
+    if (!products) {
+      res.status(200).json([])
+    }
+    res.status(200).json(products)
+
+  } catch (error) {
+    console.log("Error while getting product categories", error.message);
+    res.status(500).json({
+      message: "Internal Server Error getting product categories"
+    })
+  }
+}
+
 exports.getProductById = async (req, res) => {
   const id = req.params.id
 
