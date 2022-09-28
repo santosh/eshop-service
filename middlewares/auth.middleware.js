@@ -40,7 +40,20 @@ isAdmin = async (req, res, next) => {
   }
 }
 
+isNotAdmin = async (req, res, next) => {
+  const user = await User.findOne({ username: req.username })
+
+  if (user && user.role == constants.roles.admin) {
+    return res.status(403).send({
+      message: "You are not authorised to access this endpoint!"
+    })
+  } else {
+    next()
+  }
+}
+
 module.exports = {
   authRequired,
-  isAdmin
+  isAdmin,
+  isNotAdmin
 }

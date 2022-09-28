@@ -1,12 +1,18 @@
 const mongoose = require("mongoose")
 
 const orderSchema = new mongoose.Schema({
-  id: Number,  // do we use this one, or the inbuild `_id`.
-  quantity: Number,
-  address_id: Number,
-  product_id: Number,
-  user_id: Number,
-  order_date: Date,
-})
+  quantity: {
+    type: Number,
+    required: true
+  },
+  addressId: {
+    type: String,
+    required: true
+  },
+  productId: {
+    type: String,
+    required: true
+  }
+}, { timestamps: true, versionKey: false })
 
 module.exports = mongoose.model("Order", orderSchema);
