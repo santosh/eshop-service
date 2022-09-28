@@ -2,11 +2,11 @@ const mongoose = require("mongoose")
 const constants = require("../utils/constants")
 
 const userSchema = new mongoose.Schema({
-  first_name: {
+  firstName: {
     type: String,
     required: true
   },
-  last_name: {
+  lastName: {
     type: String,
     required: true
   },
@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  contact_number: {
+  contactNumber: {
     type: String,
     required: true
   },

@@ -6,7 +6,7 @@ exports.newAddress = async (req, res) => {
   // read the address input
   const addressObj = {
     name: req.body.name,
-    contact_number: req.body.contact_number,
+    contactNumber: req.body.contactNumber,
     street: req.body.street,
     landmark: req.body.landmark,
     city: req.body.city,
@@ -22,7 +22,7 @@ exports.newAddress = async (req, res) => {
     const addressResp = {
       _id: addressCreated._id,
       name: addressCreated.name,
-      contact_number: addressCreated.contact_number,
+      contactNumber: addressCreated.contactNumber,
       street: addressCreated.street,
       landmark: addressCreated.landmark,
       city: addressCreated.city,

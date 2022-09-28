@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  available_items: {
+  availableItems: {
     type: Number,
     required: true
   },
@@ -21,7 +21,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  image_url: {
+  imageURL: {
     type: String,
     required: true
   },

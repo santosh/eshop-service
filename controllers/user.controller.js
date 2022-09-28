@@ -16,14 +16,14 @@ exports.signup = async (req, res) => {
 
   // read the user input
   const userObj = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
     // if no role, role is user
     role: req.body.role === undefined ? constants.roles.user : req.body.role,
-    contact_number: req.body.contact_number
+    contactNumber: req.body.contactNumber
   }
 
   // store user data to DB
@@ -32,12 +32,12 @@ exports.signup = async (req, res) => {
 
     // return response
     const userResp = {
-      first_name: userCreated.first_name,
-      last_name: userCreated.last_name,
+      firstName: userCreated.firstName,
+      lastName: userCreated.lastName,
       username: userCreated.username,
       email: userCreated.email,
       role: userCreated.role,
-      contact_number: userCreated.contact_number,
+      contactNumber: userCreated.contactNumber,
       createdAt: userCreated.createdAt,
       updatedAt: userCreated.updatedAt
     }
@@ -77,7 +77,7 @@ exports.login = async (req, res) => {
 
   return res.status(200).send({
     email: user.email,
-    name: `${user.first_name} ${user.last_name}`,
+    name: `${user.firstName} ${user.lastName}`,
     isAuthenticated: true
   })
 }

@@ -1,13 +1,13 @@
 const signupBody = (req, res, next) => {
-  if (!req.body.first_name) {
+  if (!req.body.firstName) {
     return res.status(400).send({
-      message: "first_name not provided"
+      message: "firstName not provided"
     })
   }
 
-  if (!req.body.last_name) {
+  if (!req.body.lastName) {
     return res.status(400).send({
-      message: "last_name not provided"
+      message: "lastName not provided"
     })
   }
 
@@ -36,14 +36,14 @@ const signupBody = (req, res, next) => {
     })
   }
 
-  if (!req.body.contact_number) {
+  if (!req.body.contactNumber) {
     return res.status(400).send({
-      message: "contact_number not provided"
+      message: "contactNumber not provided"
     })
   }
 
   // validate contact number; if incorrect, return "Invalid contact number!"
-  if (req.body.contact_number && !isContactNumberValid(req.body.contact_number)) {
+  if (req.body.contactNumber && !isContactNumberValid(req.body.contactNumber)) {
     return res.status(400).send({
       message: "Invalid contact number!"
     })

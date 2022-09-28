@@ -36,12 +36,12 @@ async function init() {
   try {
     // create an admin user
     const admin = await User.create({
-      first_name: "Santosh",
-      last_name: "Kumar",
+      firstName: "Santosh",
+      lastName: "Kumar",
       username: "sntshk",
       email: "sntshkmr60@gmail.com",
       password: bcrypt.hashSync("Welcome@1", secretConfig.saltLength),
-      contact_number: "1234567890",
+      contactNumber: "1234567890",
       role: constants.roles.admin,
     })
 

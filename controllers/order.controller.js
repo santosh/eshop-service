@@ -20,7 +20,7 @@ exports.newOrder = async (req, res) => {
   }
 
   // if out of stock
-  if (product.available_items < 1 || product.available_items - req.body.quantity < 0) {
+  if (product.availableItems < 1 || product.availableItems - req.body.quantity < 0) {
     res.status(400).json({
       message: `Product with ID - ${req.body.productId} is currently out of stock!`
     })

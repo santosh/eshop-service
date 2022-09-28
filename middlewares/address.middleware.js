@@ -5,13 +5,13 @@ const addressBody = (req, res, next) => {
     })
   }
 
-  if (!req.body.contact_number) {
+  if (!req.body.contactNumber) {
     return res.status(400).send({
       message: "Invalid contact number!"
     })
   }
 
-  if (req.body.contact_number && !isContactNumberValid(req.body.contact_number)) {
+  if (req.body.contactNumber && !isContactNumberValid(req.body.contactNumber)) {
     return res.status(400).send({
       message: "Invalid contact number!"
     })
@@ -57,8 +57,8 @@ const addressBody = (req, res, next) => {
 }
 
 
-function isContactNumberValid(contact_number) {
-  return /^\d{10}$/.test(contact_number)
+function isContactNumberValid(contactNumber) {
+  return /^\d{10}$/.test(contactNumber)
 }
 
 function isZipValid(zip) {

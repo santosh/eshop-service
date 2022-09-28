@@ -5,9 +5,9 @@ const productBody = (req, res, next) => {
     })
   }
 
-  if (!req.body.available_items) {
+  if (!req.body.availableItems) {
     return res.status(400).send({
-      message: "available_items not provided"
+      message: "availableItems not provided"
     })
   }
 
@@ -29,9 +29,9 @@ const productBody = (req, res, next) => {
     })
   }
 
-  if (!req.body.image_url) {
+  if (!req.body.imageURL) {
     return res.status(400).send({
-      message: "image_url not provided"
+      message: "imageURL not provided"
     })
   }
 

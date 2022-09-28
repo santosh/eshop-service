@@ -8,8 +8,8 @@ exports.newProduct = async (req, res) => {
     price: req.body.price,
     description: req.body.description,
     manufacturer: req.body.manufacturer,
-    available_items: req.body.available_items,
-    image_url: req.body.image_url
+    availableItems: req.body.availableItems,
+    imageURL: req.body.imageURL
   }
 
   // store product data to DB
@@ -23,8 +23,8 @@ exports.newProduct = async (req, res) => {
       price: productCreated.price,
       description: productCreated.description,
       manufacturer: productCreated.manufacturer,
-      available_items: productCreated.available_items,
-      image_url: productCreated.image_url,
+      availableItems: productCreated.availableItems,
+      imageURL: productCreated.imageURL,
       createdAt: productCreated.createdAt,
       updatedAt: productCreated.updatedAt
     }
@@ -53,8 +53,8 @@ exports.updateProductById = async (req, res) => {
   product.price = req.body.price == undefined ? product.price : req.body.price
   product.description = req.body.description == undefined ? product.description : req.body.description
   product.manufacturer = req.body.manufacturer == undefined ? product.manufacturer : req.body.manufacturer
-  product.available_items = req.body.available_items == undefined ? product.available_items : req.body.available_items
-  product.image_url = req.body.image_url == undefined ? product.image_url : req.body.image_url
+  product.availableItems = req.body.availableItems == undefined ? product.availableItems : req.body.availableItems
+  product.imageURL = req.body.imageURL == undefined ? product.imageURL : req.body.imageURL
 
   // store product data to DB
   try {
@@ -67,8 +67,8 @@ exports.updateProductById = async (req, res) => {
       price: productSaved.price,
       description: productSaved.description,
       manufacturer: productSaved.manufacturer,
-      available_items: productSaved.available_items,
-      image_url: productSaved.image_url,
+      availableItems: productSaved.availableItems,
+      imageURL: productSaved.imageURL,
       createdAt: productSaved.createdAt,
       updatedAt: productSaved.updatedAt
     }
